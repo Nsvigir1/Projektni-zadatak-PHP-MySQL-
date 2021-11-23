@@ -148,31 +148,6 @@
         else{
             print '<h3> This username or email is alredy taken! </h3> ';
         }
-
-        /*$query  = "SELECT * FROM users_ns";
-		$query .= " WHERE email='" .  $_POST['email'] . "'";
-		$query .= " OR username='" .  $_POST['username'] . "'";
-		$result = @mysqli_query($MySQL, $query);
-		$row = @mysqli_fetch_array($result, MYSQLI_ASSOC);
-		
-		if ($row['email'] == '' || $row['username'] == '') {
-			# password_hash https://secure.php.net/manual/en/function.password-hash.php
-			# password_hash() creates a new password hash using a strong one-way hashing algorithm
-			$pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT, ['cost' => 12]);
-			
-			$query  = "INSERT INTO users_ns (firstname, lastname, email, username, password, country)";
-			$query .= " VALUES ('" . $_POST['firstname'] . "', '" . $_POST['lastname'] . "', '" . $_POST['email'] . "', '" . $_POST['username'] . "', '" . $pass_hash . "', '" . $_POST['country'] . "')";
-			$result = @mysqli_query($MySQL, $query);
-			
-			# ucfirst() — Make a string's first character uppercase
-			# strtolower() - Make a string lowercase
-			echo '<p>' . ucfirst(strtolower($_POST['firstname'])) . ' ' .  ucfirst(strtolower($_POST['lastname'])) . ', thank you for registration </p>
-			<hr>';
-		}
-		else {
-			echo '<p>User with this email or username already exist!</p>';
-		}*/
         
-
     }
 ?>
