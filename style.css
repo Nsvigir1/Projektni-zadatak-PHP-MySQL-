@@ -1,0 +1,148 @@
+body,
+html {
+  font-family: 'Oswald', sans-serif;
+  margin: 0;
+  font-size: 16px;
+}
+header {
+  display: block;
+  width: 100%;
+}
+.hero-subimage {
+  background-image: url('img/banner-php.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 200px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li {
+  float: left;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: #111;
+}
+h1,
+h2 {
+  margin: 0.5em;
+  font-size: 2em;
+}
+hr {
+  margin: 1em;
+  border: 1px solid rgb(0, 0, 0);
+  clear: both;
+}
+.password_gen p {
+  border: 1px solid black;
+}
+p {
+  margin: 1em;
+  line-height: 1.4em;
+  letter-spacing: 1px;
+}
+.gallery figcaption {
+  font-size: 90%;
+  text-align: center;
+}
+.gallery figure {
+  padding: 0.5em;
+  margin: 0 1em 0.5em 1em;
+  float: left;
+  width: 20%;
+  border: 1px solid black;
+}
+
+footer {
+  background-color: rgb(41, 40, 40);
+  padding: 0.5em;
+  clear: both;
+}
+footer p {
+  color: antiquewhite;
+  text-align: center;
+  margin: 0.5em;
+  line-height: 0.4em;
+}
+
+img {
+  height: 200px;
+  width: 250px;
+}
+figure {
+  padding: 0.5em;
+  margin: 0 1em 0.5em 1em;
+  width: 250px;
+  border: 1px solid black;
+}
+.leng img {
+  padding: 0.5em;
+  width: 18%;
+  border: 1px solid black;
+  margin: 0 1em 0.5em 1em;
+}
+.leng h2 {
+  border-top: 2px solid black;
+}
+label {
+  display: block;
+  font-size: 16px;
+  margin: 0.2em 0.8em 0.5em;
+}
+#contact {
+  margin: 1.2em;
+}
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+select {
+  width: 30%;
+  padding: 0.5em;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 0.4em 0.4em 0.5em;
+  font-size: 18px;
+  display: block;
+}
+
+input[type='submit'] {
+  width: 15%;
+  border-radius: 4px;
+  padding: 0.5em 0.2em;
+  margin: 0.4em 0.2em 0.5em;
+  background-color: rgb(71, 103, 209);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+input[type='submit']:hover {
+  background-color: rgb(27, 11, 117);
+}
+#gallery figure {
+  padding: 0.5em;
+  margin: 0 1em 0.5em 1em;
+  width: 250px;
+  border: 1px solid black;
+  float: left;
+}
+
+#gallery figcaption {
+  font-size: 90%;
+  height: 50px;
+  text-align: center;
+}
