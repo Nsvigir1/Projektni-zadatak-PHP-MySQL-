@@ -23,4 +23,9 @@
         $username = $part1. str_shuffle($part2). $part3; //str_shuffle to randomly shuffle all characters 
         return $username;
     }
+
+    function pickerDateToMysql($pickerDate){
+		$date = DateTime::createFromFormat('Y-m-d H:i:s', $pickerDate);
+		return $date->format('d. m. Y H:i:s');
+	}
 ?>

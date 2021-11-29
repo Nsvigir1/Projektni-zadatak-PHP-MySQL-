@@ -5,7 +5,7 @@
   #Set menu 1 if none selected
   if (!isset($menu)) { $menu = 1; }
 
-  if(!isset($_POST['_action_']))  { $_POST['_action_'] = FALSE;  }
+  if(!isset($_POST['action']))  { $_POST['action'] = FALSE; }
 
   # DataBase connection 
   include("db_connection.php");
@@ -22,10 +22,11 @@ print'
       <meta name="author" content="Nikola Švigir " />
       <title>NTPWS projekt</title>
       <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
-      <link rel="stylesheet" href="style.css?v=1" />
+      <link rel="stylesheet" href="style.css?v=5" />
     </head>
   <body>
     <header>
+      <img class="header-img" src="img/code.png" />
       <nav>';
       include("menu.php");
       print '</nav>
@@ -39,8 +40,8 @@ print'
   # Start page
   if (!isset($_GET['menu']) || $_GET['menu'] == 1) {include ("home.php");}
 
-  # Programing languages
-  else if($_GET['menu'] == 2) {include ("programing_languages.php");}
+  # Programing language
+  else if($_GET['menu'] == 2) {include ("programing_language.php");}
 
   # Contact
   else if($_GET['menu'] == 3) {include ("contact.php");}
@@ -53,6 +54,15 @@ print'
 
   #registrarion
   else if($_GET['menu'] == 6) {include ("registration.php");}
+
+  #Sign in
+  else if($_GET['menu'] == 7) {include ("signin.php");}
+
+  #Administrator
+  else if($_GET['menu'] == 8) {include ("administrator.php");}
+
+  #Administrator
+  else if($_GET['menu'] == 9) {include ("weather.php");}
   
   print'
   </main>

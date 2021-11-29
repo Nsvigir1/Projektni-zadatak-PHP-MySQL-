@@ -1,0 +1,29 @@
+<?php 
+	if ($_SESSION['user']['valid'] == 'true') {
+		if (!isset($action)) { $action = 2; }
+		print '
+		<h1>Administration</h1>
+		<div id="administrator">
+			<ul>';
+            if ($_SESSION['user']['access'] === 'administrator') {
+            print '
+				<li><a href="index.php?menu=8&amp;action=1">Users</a></li>';
+                #href="index.php?menu=5
+            } 
+            print '
+				<li><a href="index.php?menu=8&amp;action=2">News</a></li>
+			</ul>';
+			# Admin Users
+            print''.$action;
+			if ($action == 1) {include("administrator/users.php"); }
+			
+			# Admin News
+			else if ($action == 2) {include("administrator/news.php"); }
+		print '
+		</div>';
+	}
+	else {
+		$_SESSION['message'] = '<p>Please register or login using your credentials!</p>';
+		header("Location: index.php?menu=7");
+	}
+?>

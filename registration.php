@@ -1,6 +1,6 @@
 <?php
 
-    require_once "func_gen.php";
+    #require_once "func_gen.php";
     
     print '
     <!DOCTYPE html>
@@ -19,11 +19,11 @@
       </head>
     <h1>User Registration</h1>';
    
-    if ($_POST['_action_'] == FALSE) {
+    if ($_POST['action'] == FALSE) {
         
         print '
         <form action="" id="inf_form" name="inf_form" method="POST">
-        <input type="hidden" id="_action_" name="_action_" value="TRUE">
+        <input type="hidden" id="action" name="action" value="TRUE">
 
         <label for="firstname">First Name*</label>
         <input
@@ -71,7 +71,7 @@
         <select type="select" name="country" id="country" required>
             <option value="">Select country</option>';
             $query  = "SELECT * FROM countries";
-            $result = @mysqli_query($MySQL, $query);
+            $result = @mysqli_query($db, $query);
             while($row = @mysqli_fetch_array($result)) {
                 print '<option value="' . $row['country_code'] . '">' 
                 . $row['country_name'] . '</option>';
@@ -119,14 +119,15 @@
             }
         }
         print'
+        
         </form>';
     }
-    else if ($_POST['_action_'] == TRUE) {
+    else if ($_POST['action'] == TRUE) {
         require_once "func_gen.php";
         $query  = "SELECT * FROM users";
         $query .= " WHERE email='" .  $_POST['email'] . "'";
 		$query .= " OR username='" .  $_POST['username'] . "'";
-        $result = @mysqli_query($MySQL, $query);
+        $result = @mysqli_query($db, $query);
         $row = @mysqli_fetch_array($result);
         #$con=mysqli_connect("localhost", "root","ajeto","pwa");
         $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT, ['cost' => 12]);
@@ -135,7 +136,7 @@
             $query  = "INSERT INTO users (firstname, lastname, email, username, password, country, city, street, dob)";
             $query .= " VALUES ('" . $_POST['firstname'] . "', '" . $_POST['lastname'] . "', '" . $_POST['email'] . "', '" . $_POST['username'] . "', '" . $pass_hash . "'
             ,'" . $_POST['country'] . "','" . $_POST['city'] . "','" . $_POST['street'] . "','" . $_POST['dob'] . "')";
-            $result = @mysqli_query($MySQL, $query);
+            $result = @mysqli_query($db, $query);
             if($result){
                 #$msg = "Registered successfully";
                 echo 'Registered Successfully';

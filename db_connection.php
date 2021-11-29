@@ -1,3 +1,13 @@
 <?php
-    # Connection to MySQL database
-    $MySQL = mysqli_connect("localhost","root","","_project") or die("Couldn't connect to MySQL'");
+    # Connection to db database
+    session_start();
+
+    $serverName = "localhost";
+    $user = "root";
+    $password = "";
+    $database = "_project";
+
+    $db = mysqli_connect($serverName,$user,$password,"$database") or die("Couldn't connect to db'");
+    $_SESSION['db'] = $db;
+    
+?>

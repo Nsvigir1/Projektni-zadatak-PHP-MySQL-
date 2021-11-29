@@ -19,7 +19,7 @@
         <main>
           <h1>Computer programming</h1>
           <figure>
-            <img src="img/programing.jpeg" alt="programing" title="programing" />
+            <img class="home" src="img/programing.jpeg" alt="programing" title="programing" />
             <figcaption>Introduction to the world of Programming.</figcaption>
           </figure>
           <p>

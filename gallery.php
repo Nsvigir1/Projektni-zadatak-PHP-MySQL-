@@ -10,7 +10,7 @@
         />
         <meta http-equiv="content-type" content="text/html" />
         <meta name="author" content="Nikola Švigir " />
-        <title>Programing languages</title>
+        <title>Gallery</title>
         <link rel="shortcut icon" type="image/x-icon" href="favicon-cyan.ico" />
         <link rel="stylesheet" href="style.css" />
       </head>

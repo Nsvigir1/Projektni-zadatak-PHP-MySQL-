@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2021 at 07:46 PM
+-- Generation Time: Nov 28, 2021 at 01:29 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test`
+-- Database: `_project`
 --
 
 -- --------------------------------------------------------
@@ -28,17 +28,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `users` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `name` varchar(50) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
-  `lastname` varchar(50) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
-  `E-mail` varchar(100) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `PASSWORD` varchar(100) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `country_short` varchar(2) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `city` varchar(100) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `street` varchar(100) COLLATE utf8_croatian_mysql561_ci NOT NULL,
-  `DOB` int(11) NOT NULL,
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
+  `ID` int(11) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `country` varchar(2) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `street` varchar(100) NOT NULL,
+  `dob` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `firstname`, `lastname`, `email`, `username`, `password`, `country`, `city`, `street`, `dob`) VALUES
+(17, 'Nikola', 'Svigir', 'svigirn@gmail.com', 'nikola', '$2y$12$re9QP2RC6.pjAdUnep68AOx4YCLCQ7ymhuyGs89yaVc', 'HR', 'ZAGREB', 'Nadvina 12', 1997);
 
 --
 -- Indexes for dumped tables
@@ -48,7 +55,7 @@ CREATE TABLE `users` (
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -58,7 +65,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
