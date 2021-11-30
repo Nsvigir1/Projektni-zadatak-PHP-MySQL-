@@ -1,5 +1,4 @@
 <?php 
-	echo'QQQQQ';
 	# Update user profile
 	if (isset($_POST['edit']) && $_POST['action'] == 'TRUE') {
 		$query  = "UPDATE users SET firstName='" . $_POST['firstName'] . "', lastName='" . $_POST['lastName'] . "', email='" . $_POST['email'] . "', username='" . $_POST['username'] . "', country='" . $_POST['country'] . "' , access='" . $_POST['access'] . "'";
@@ -74,7 +73,7 @@
 			<input type="email" id="email" name="email"  value="' . $row['email'] . '" placeholder="Your e-mail.." required>
 			
 			<label for="username">Username</label>
-			<input type="text" id="username" name="username" value="' . $row['username'] . ' placeholder="Username.." required><br>
+			<input type="text" id="username" name="username" value="' . $row['username'] . '" placeholder="Username.." required><br>
 
             <label for="username">Access</label>
             <select name="access" id="access">
@@ -115,13 +114,14 @@
 			<table  style="display:flex;flex-direction:column;align-items:center;margin-bottom:50px;">
 				<thead>
 					<tr>
-                        <th width="35"></th>
-						<th width="35"></th>
-						<th width="150">First name</th>
-						<th width="150">Last name</th>
-						<th width="150">E mail</th>
-						<th width="150">Country</th>
-                        <th width="150">Access</th>
+                        <th width="80"></th>
+						<th width="120"></th>
+						<th width="200">First name</th>
+						<th width="200">Last name</th>
+						<th width="200">Username</th>
+						<th width="230">E mail</th>
+						<th width="200">Country</th>
+                        <th width="200">Access</th>
 					</tr>
 				</thead>
 				<tbody style="border: 1px solid black">';
@@ -131,11 +131,12 @@
 				while($row = @mysqli_fetch_array($result)) {
 					#print_r(array_keys($row));
 					print '
-					<tr style="text-align:left; border: 1px solid black";>
+					<tr style="text-align:center; border: 1px solid black";>
                         <td width="80; border: 1px solid black"><a href="index.php?menu='.$menu.'&amp;action='.$action.'&amp;edit=' .$row['id']. '">Edit</a></td>
                         <td width="120"><a href="index.php?menu='.$menu.'&amp;action='.$action.'&amp;delete=' .$row['id']. '">Delete</a></td>
 						<td width="200;"><strong>' . $row['firstname'] . '</strong></td>
-						<td width="200"> <strong>' . $row['lastname'] . '</strong></td>
+						<td width="200"><strong>' . $row['lastname'] . '</strong></td>
+						<td width="200"><strong>' . $row['username'] . '</strong></td>
 						<td width="230">' . $row['email'] . '</td>
 						<td width="200"">';
 							$_query  = "SELECT * FROM countries";

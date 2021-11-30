@@ -1,9 +1,9 @@
 <?php 
-    echo 'HIIIIIIII';
+
     # Add news
 	if (isset($_POST['action']) && $_POST['action'] == 'new_news') {
 		$_SESSION['message'] = '';
-		$permision = 1;
+		$permision = 1; #Display news to all users
 		if ($_SESSION['user']['acces'] === 'user') {
 			$permision = 0;
 		}
@@ -12,7 +12,6 @@
 		$query .= " VALUES ('" . $_POST['title'] . "', '" . $_POST['description'] . "', '" . date("Y-m-d G:i") . "', '".$permision."')";
 		$result = @mysqli_query($db, $query);
         $ID = mysqli_insert_id($db);
-		#$count = count($_FILES['picture']['name']);
 
         # picture
         if($_FILES['picture']['error'] == UPLOAD_ERR_OK && $_FILES['picture']['name'] != "") {
@@ -34,19 +33,6 @@
 		$_SESSION['message'] .= '<p>You successfully added news!</p>';
 		header("Location: index.php?menu=8&action=2");
 
-
-        /*
-		for($i = 0; $i < $count; $i++) {
-			$ext = strtolower(strrchr($_FILES['picture']['name'][$i], "."));
-            $_picture = $ID . '-' . rand(1,100) . $ext;
-			copy($_FILES['picture']['tmp_name'][$i], "assets/".$_picture);	
-			if ($ext == '.jpg' || $ext == '.png' || $ext == '.jpeg' || $ext == '.gif') {
-				$_query  = "INSERT INTO pictures (description,img, newsId) VALUES ('". $_POST['imageDesc']. "','".$_picture."', '".$ID."')";
-				$_result = @mysqli_query($db, $_query);
-			}
-		}
-		$_SESSION['message'] .= "<p>You successfully added ".$count." images!</p>";
-		header("Location: index.php?menu=8&action=2");*/
 	}
 	
 
@@ -81,23 +67,7 @@
 		$_SESSION['message'] = '<p>You successfully changed news!</p>';
 		header("Location: index.php?menu=8&action=2");
 
-        /*
-		$count = count($_FILES['picture']['name']);
-		for($i = 0; $i < $count; $i++) {
-			$ext = strtolower(strrchr($_FILES['picture']['name'][$i], "."));
-            $_picture = $ID . '-' . rand(1,100) . $ext;
-			if (empty($_FILES['picture'])) {
-				copy($_FILES['picture']['tmp_name'][$i], "assets/".$_picture);
-				if ($ext == '.jpg' || $ext == '.png' || $ext == '.jpeg' || $ext == '.gif') {
-					$desc = "aaaa";
-					$_query  = "INSERT INTO pictures (description,img, newsId) VALUES ('". $desc. "','".$_picture."', '".$ID."')";
-					$_result = @mysqli_query($db, $_query);
-				}
-			}
-		}
-		$_SESSION['message'] .= "<p>You successfully added ".$count." images!</p>";
-		
-		header("Location: index.php?menu=8&action=2");*/
+       
 	}
 	
     # Delete news
@@ -119,20 +89,6 @@
 		$_SESSION['message'] = '<p>You successfully deleted news!</p>';
 		header("Location: index.php?menu=8&action=2");
 
-        /*
-		$newsId = $_GET['delete'];
-		$query  = "DELETE FROM pictures WHERE newsId='".$newsId."'";
-		$result = @mysqli_query($db, $query);
-		$file = "assets/".$newsId."*"."."."*";
-		foreach(glob($file) as $img) {
-			unlink($img);
-		}
-    	$query  = "DELETE FROM news WHERE id='".(int)$_GET['delete']."'";
-		$result = @mysqli_query($db, $query);
-
-		$_SESSION['message'] = '<p>You successfully removed news!</p>';
-		
-		header("Location: index.php?menu=8&action=2");*/
 	}
 	
 	if (isset($_GET['id']) && $_GET['id'] != '') {
@@ -189,8 +145,8 @@
 		print '
 		<h2>Edit news</h2>
 		<form action="" id="news_form_edit" name="news_form_edit" method="POST" enctype="multipart/form-data">
-
 			<input type="hidden" id="action" name="action" value="edit_news">
+			
 			<input type="hidden" id="edit" name="edit" value="' . $row['id'] . '">
 
 			<label for="title">Title</label>
@@ -202,7 +158,7 @@
 			<label for="picture">Picture</label>
 			<input type="file" id="picture" name="picture">
 
-			<label for="permision">permision</label>
+			<label for="permision">Permision</label>
             <select name="permision" id="permision">
 			<option value="" selected disabled hidden>Select</option>
             <option value="1">True</option>
@@ -222,7 +178,7 @@
 		<div id="news">
 			<table style="display:flex;flex-direction:column;align-items:center;">
 				<thead>
-					<tr>
+					<tr style="text-align:center; border: 1px solid black";>
 						<th width="50"></th>
 						'; 
 						if ($_SESSION['user']['access'] === 'administrator' || $_SESSION['user']['access'] === 'editor') {
@@ -231,10 +187,11 @@
 							<th width="50"></th>';
 						}
 						print '
-						<th width="150">Title</th>
-						<th width="300">Description</th>
-						<th width="150">Date</th>
-						<th width="150"></th>
+						<th width="200">Title</th>
+						<th width="500">Description</th>
+						<th width="200">Date</th>
+						<th width="300">Picture</th>
+						<th width="200"></th>
 					</tr>
 				</thead>
 				<tbody style="display: flex;flex-direction:column;row-gap:30px;">';
@@ -243,8 +200,8 @@
 				$result = @mysqli_query($db, $query);
 				while($row = @mysqli_fetch_array($result)) {
 					print '
-					<tr>
-						<td width="150"><a href="index.php?menu='.$menu.'&amp;action='.$action.'&amp;id=' .$row['id']. '"></a></td>';
+					<tr style="text-align:center; border: 1px solid black";>
+						<td width="50"><a href="index.php?menu='.$menu.'&amp;action='.$action.'&amp;id=' .$row['id']. '">Full Article</a></td>';
 
 						if ($_SESSION['user']['access'] === 'administrator' || $_SESSION['user']['access'] === 'editor') {
 							print '
@@ -252,17 +209,19 @@
 							<td width="50"><a href="index.php?menu='.$menu.'&amp;action='.$action.'&amp;delete=' .$row['id']. '">Delete</a></td>
 							';
 						} print '
-						<td width="150">' . $row['title'] . '</td>
-						<td width="300">';
+						<td width="200">' . $row['title'] . '</td>
+						<td width="500">';
 						if(strlen($row['description']) > 160) {
-                            echo substr(strip_tags($row['description']), 0, 160).'...';
+                            echo substr(strip_tags($row['description']), 0, 100).'...';
                         } else {
                             echo strip_tags($row['description']);
                         }
 						print '
 						</td>
-						<td width="150">' . $row['date'] . '</td>
-						<td width="150">
+						<td width="200">' . $row['date'] . '</td>
+						<td width="300">'; echo '<img src="news/'.( $row['picture'] ).'"/></td>';
+						print'
+						<td width="200">
 						</td>
 					</tr>';
 				}
@@ -271,7 +230,7 @@
 			</table>
 			
 		</div>
-		<a style="display: flex;justify-content: center;margin-top: 30px;margin-bottom:30px;" href="index.php?menu=' . $menu . '&amp;action=' . $action . '&amp;add=true" class="AddLink">Add news</a>'; #promjeniti mozda jos
+		<a style="display: flex;justify-content: left;margin: 30px" href="index.php?menu=' . $menu . '&amp;action=' . $action . '&amp;add=true" class="AddLink">Add news</a>'; 
 	}
 
 	# Close MySQL connection

@@ -1,6 +1,4 @@
 <?php
-
-    #require_once "func_gen.php";
     
     print '
     <!DOCTYPE html>
@@ -123,7 +121,6 @@
         </form>';
     }
     else if ($_POST['action'] == TRUE) {
-        require_once "func_gen.php";
         $query  = "SELECT * FROM users";
         $query .= " WHERE email='" .  $_POST['email'] . "'";
 		$query .= " OR username='" .  $_POST['username'] . "'";

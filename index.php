@@ -4,11 +4,12 @@
 
   #Set menu 1 if none selected
   if (!isset($menu)) { $menu = 1; }
-
+  if(isset($_GET['action'])) { $action   = (int)$_GET['action']; }
   if(!isset($_POST['action']))  { $_POST['action'] = FALSE; }
 
   # DataBase connection 
   include("db_connection.php");
+  include ("func_gen.php");
 print'
   <!DOCTYPE html>
   <html lang="en">
@@ -63,6 +64,9 @@ print'
 
   #Administrator
   else if($_GET['menu'] == 9) {include ("weather.php");}
+
+  #Administrator
+  else if($_GET['menu'] == 10) {include ("news.php");}
   
   print'
   </main>

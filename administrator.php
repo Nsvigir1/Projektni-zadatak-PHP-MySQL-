@@ -1,6 +1,6 @@
 <?php 
 	if ($_SESSION['user']['valid'] == 'true') {
-		if (!isset($action)) { $action = 2; }
+		if (!isset($action)) { $action = 1; }
 		print '
 		<h1>Administration</h1>
 		<div id="administrator">
@@ -13,8 +13,8 @@
             print '
 				<li><a href="index.php?menu=8&amp;action=2">News</a></li>
 			</ul>';
+			
 			# Admin Users
-            print''.$action;
 			if ($action == 1) {include("administrator/users.php"); }
 			
 			# Admin News
