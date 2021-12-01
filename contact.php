@@ -25,8 +25,8 @@
             style="border: 0"
             allowfullscreen=""
             loading="lazy"
-            ></iframe>
-            <form action="" id="inf_form" name="inf_form" method="POST">
+            ></iframe>';
+            /*<form action="" id="inf_form" name="inf_form" method="POST">
             <label for="fname">First Name*</label>
             <input
                 type="text"
@@ -79,7 +79,8 @@
                 <option value="UK">UK</option>
             </select>
             <input type="submit" value="Submit" />
-            </form>
+            </form>*/
+            print'
         </div>
         </main>
         <footer>

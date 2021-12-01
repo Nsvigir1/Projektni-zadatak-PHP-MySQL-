@@ -4,7 +4,7 @@
 	if (isset($_POST['action']) && $_POST['action'] == 'new_news') {
 		$_SESSION['message'] = '';
 		$permision = 1; #Display news to all users
-		if ($_SESSION['user']['acces'] === 'user') {
+		if ($_SESSION['user']['access'] === 'user') {
 			$permision = 0;
 		}
 

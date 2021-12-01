@@ -11,13 +11,15 @@
 			print '
             <li><a href="index.php?menu=6">Registration</a></li>
             <li><a href="index.php?menu=7">Sign In</a></li>';
-		}else if ($_SESSION['user']['valid'] == 'true') {
+		}else if ($_SESSION['user']['valid'] == 'true' ) {
+            if($_SESSION['user']['access'] === 'administrator' || $_SESSION['user']['access'] === 'editor'){
+                print'
+                <li><a href="index.php?menu=8">Admin</a></li>';
+            }
 			print '
-			<li><a href="index.php?menu=8">Admin</a></li>
 			<li><a href="signout.php">Sign Out</a></li>';
 		}
         print'
-        <li>"   "</li>
         <li><a href="index.php?menu=9">Weather</a></li>
 
     </ul>';

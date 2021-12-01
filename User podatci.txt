@@ -1,0 +1,6 @@
+Podatci o korisnicima:
+
+Username	Password	Role
+nikola		1234		Admin
+ivan		qwer		Editor
+perks		qwer1234	User
